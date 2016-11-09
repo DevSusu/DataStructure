@@ -13,11 +13,12 @@ TreeNode<K,D>::~TreeNode() {
 template <typename K, typename D>
 TreeNode<K,D>::TreeNode(K k, D d) : key(k), data(d) {
     left = right = NULL;
+    height = 0;
 }
 
 template <typename K, typename D>
 void TreeNode<K,D>::Print() {
-    std::cout << "<" << key << ", " << data << "> ";
+    std::cout << "<" << key << " - " << data << "> ";
 }
 
 template <typename K, typename D>
@@ -59,16 +60,6 @@ void BST<K, D>::Remove(const K& key) {
 template <typename K, typename D>
 void BST<K, D>::Insert(const K& k, const D& d) {
     Insert(root, k, d);
-}
-
-template <typename K, typename D>
-D BST<K, D>::Find(const K& key) {
-    TreeNode<K,D>* tmp = Find(root, key);
-    
-    if(tmp)
-        return tmp->data;
-    
-    return NULL;
 }
 
 template <typename K, typename D>
